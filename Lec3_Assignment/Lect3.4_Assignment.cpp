@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Node c?a danh sách liên k?t
 class Node {
 public:
     int data;
@@ -12,7 +11,6 @@ public:
     }
 };
 
-// Hàng ð?i s? d?ng danh sách liên k?t
 class Queue {
 private:
     Node* front;
@@ -22,12 +20,10 @@ public:
         front = rear = nullptr;
     }
 
-    // Ki?m tra hàng ð?i có r?ng không
     bool isEmpty() {
         return (front == nullptr);
     }
 
-    // Thêm ph?n t? vào hàng ð?i (enqueue)
     void enqueue(int value) {
         Node* newNode = new Node(value);
         if (rear == nullptr) {
@@ -39,7 +35,6 @@ public:
         cout << "Enqueued: " << value << endl;
     }
 
-    // Xóa ph?n t? kh?i hàng ð?i (dequeue)
     void dequeue() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -52,7 +47,6 @@ public:
         delete temp;
     }
 
-    // Xem ph?n t? ð?u tiên c?a hàng ð?i (peek)
     int peek() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -61,7 +55,6 @@ public:
         return front->data;
     }
 
-    // Hi?n th? hàng ð?i
     void display() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -89,10 +82,10 @@ int main() {
     return 0;
 }
 
-// Khai báo Node: data và next 
-// Khai báo Queue: head = tail = nullptr
-// Check hàng ð?i có r?ng không
-// Thêm ph?n t? vào hàng ð?i (enqueue)
-// Xóa ph?n t? kh?i hàng ð?i (dequeue)
-// Xem ph?n t? ð?u tiên c?a hàng ð?i (peek)
-// Hi?n th? hàng ð?i
+// Khai bÃ¡o Node: data vÃ  next 
+// Khai bÃ¡o Queue: head = tail = nullptr
+// Check hÃ ng Ä‘á»£i cÃ³ rá»—ng khÃ´ng
+// ThÃªm pháº§n tá»­ vÃ o hÃ ng Ä‘á»£i (enqueue)
+// XÃ³a pháº§n tá»­ khá»i hÃ ng Ä‘á»£i (dequeue)
+// Xem pháº§n tá»­ Ä‘áº§u tiÃªn cá»§a hÃ ng Ä‘á»£i(peek)
+// Hiá»ƒn thá»‹ hÃ ng Ä‘á»£i
