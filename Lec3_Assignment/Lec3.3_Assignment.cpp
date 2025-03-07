@@ -1,28 +1,26 @@
 #include <iostream>
-const int MAX_SIZE = 100; // Kích thý?c t?i ða c?a hàng ð?i
 using namespace std;
+
+const int MAX_SIZE = 100;
 
 class Queue {
 private:
-    int arr[MAX_SIZE]; // M?ng ð? lýu tr? ph?n t?
-    int front, rear;   // Ch? s? ð?u và cu?i hàng ð?i
+    int arr[MAX_SIZE]; 
+    int front, rear;  
 public:
     Queue() {
         front = -1;
         rear = -1;
     }
 
-    // Ki?m tra hàng ð?i có r?ng không
     bool isEmpty() {
         return (front == -1 || front > rear);
     }
 
-    // Ki?m tra hàng ð?i có ð?y không
     bool isFull() {
         return (rear == MAX_SIZE - 1);
     }
 
-    // Thêm ph?n t? vào hàng ð?i (enqueue)
     void enqueue(int value) {
         if (isFull()) {
             cout << "Queue is full!" << endl;
@@ -33,7 +31,6 @@ public:
         cout << "Enqueued: " << value << endl;
     }
 
-    // Xóa ph?n t? kh?i hàng ð?i (dequeue)
     void dequeue() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -43,7 +40,6 @@ public:
         front++;
     }
 
-    // Xem ph?n t? ð?u tiên c?a hàng ð?i (peek)
     int peek() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -52,7 +48,6 @@ public:
         return arr[front];
     }
 
-    // Hi?n th? hàng ð?i
     void display() {
         if (isEmpty()) {
             cout << "Queue is empty!" << endl;
@@ -78,12 +73,12 @@ int main() {
     return 0;
 }
 
-// Kích thý?c t?i ða c?a hàng ð?i
-// T?o m?ng lýu tr? d? li?u
-// Ch? s? ð?u và cu?i hàng ð?i
-// Check hàng ð?i có r?ng không
-// Check hàng ð?i có ð?y không
-// Thêm ph?n t? vào hàng ð?i (enqueue)
-// Xóa ph?n t? kh?i hàng ð?i (dequeue)
-// Xem ph?n t? ð?u tiên c?a hàng ð?i (peek)
-// Hi?n th? hàng ð?i
+// Khá»Ÿi táº¡o MAX = 1000, n = 0, máº£ng queue[MAX]
+// Táº¡o máº£ng lÆ°u trá»¯ dá»¯ liá»‡u
+// Chá»‰ sá»‘ Ä‘áº§u vÃ  cuá»‘i hÃ ng Ä‘á»£i
+// Check hÃ ng Ä‘á»£i cÃ³ rá»—ng khÃ´ng
+// Check hÃ ng Ä‘á»£i cÃ³ Ä‘áº§y khÃ´ng
+// ThÃªm pháº§n tá»­ vÃ o hÃ ng Ä‘á»£i (enqueue)
+// XÃ³a pháº§n tá»­ khá»i hÃ ng Ä‘á»£i (dequeue)
+// Xem pháº§n tá»­ Ä‘áº§u tiÃªn cá»§a hÃ ng Ä‘á»£i (peek)
+// Hiá»ƒn thá»‹ hÃ ng Ä‘á»£i
