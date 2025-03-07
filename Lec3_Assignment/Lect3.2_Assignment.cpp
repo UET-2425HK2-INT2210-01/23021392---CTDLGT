@@ -33,4 +33,10 @@ int main() {
     cout << result << endl;
     return 0;
 }
-// 
+// Hàm powerIterative: If n = 0 -> return 1;
+// Khởi tạo biến double result = 1; int abs_n;
+// Lấy giá trị tuyệt đối của n: nếu n âm thì abs_n = -n, n dương thì abs_n = n;
+// Tính lũy thừa của 2 bằng vòng lặp 
+// Xử lý mũ âm 
+// Gọi hàm và in kết quả
+
