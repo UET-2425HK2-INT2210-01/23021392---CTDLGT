@@ -53,7 +53,7 @@ int main() {
         children.insert(v);
     }
 
-    // Tìm root (nút không là con của ai)
+
     int root = -1;
     for (int i = 1; i <= n; ++i) {
         if (children.find(i) == children.end()) {
@@ -62,18 +62,14 @@ int main() {
         }
     }
 
-    // Chiều cao
     cout << getHeight(root) << endl;
 
-    // Duyệt tiền tự
     preorder(root);
     cout << endl;
 
-    // Duyệt hậu tự
     postorder(root);
     cout << endl;
 
-    // Kiểm tra cây nhị phân
     bool isBinary = true;
     for (auto p : tree) {
         if (p.second.size() > 2) {
@@ -91,3 +87,12 @@ int main() {
 
     return 0;
 }
+// khai báo tree:lưu cặp cha-con
+// khai báo children: lưu các node là con
+// duyệt preorder: in node hiện tại trc rồi duyệt node con
+// duyệt postorder: duyệt các con trước rồi in node hiện tại
+// duyệt inorder: áp dụng cho nhị phân. nhiều hơn 2 con => ko hợp lệ
+// tính chiều cao cây: gọi đệ quy để lấy chiều cao lớn nhất của con rồi cộng 1
+// nhập số lượng node và cạnh
+// chạy for: đọc các cặp cha con và xây cây
+// tìm node ko là con ai => root cây
