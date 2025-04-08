@@ -100,3 +100,18 @@ int main() {
 
     return 0;
 }
+// Cấu trúc node của cây nhi phân tìm kiếm
+// Thuật toán chèn node mới vào cây
+// Nguyên tắc: giá trị nhỏ hơn đặt bên trái, lớn hơn đặt bên phải
+// Nếu cây rỗng thì tạo node mới
+// Tìm node nhỏ nhất trong cây (sử dụng trong xóa node)
+// Thuật toán xóa node khỏi cây
+// 3 trường hợp: node là lá, có 1 con, hoặc 2 con
+// Duyệt cây theo thứ tự trung tự (In-order)
+// Kết quả sẽ là dãy tăng dần với BST
+// In cây ra dưới dạng cây để dễ hình dụng
+// Bớt đầu từ danh sách: 2, 1, 10, 6, 3, 8, 7, 13, 20
+// Chèn thêm: 14, 0, 35
+// Xóa các giá trị: 6, 13, 35
+// In ra dắng sắp xếp của BST
+
