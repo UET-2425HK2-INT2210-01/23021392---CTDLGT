@@ -1,0 +1,90 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class MinHeap {
+private:
+    vector<int> heap;
+
+    void heapifyUp(int index) {
+        while (index > 0) {
+            int parent = (index - 1) / 2;
+            if (heap[index] < heap[parent]) {
+                swap(heap[index], heap[parent]);
+                index = parent;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void heapifyDown(int index) {
+        int size = heap.size();
+        while (index < size) {
+            int left = 2 * index + 1;
+            int right = 2 * index + 2;
+            int smallest = index;
+
+            if (left < size && heap[left] < heap[smallest]) smallest = left;
+            if (right < size && heap[right] < heap[smallest]) smallest = right;
+
+            if (smallest != index) {
+                swap(heap[index], heap[smallest]);
+                index = smallest;
+            } else {
+                break;
+            }
+        }
+    }
+
+public:
+    void insert(int val) {
+        heap.push_back(val);
+        heapifyUp(heap.size() - 1);
+    }
+
+    void deleteValue(int val) {
+        auto it = find(heap.begin(), heap.end(), val);
+        if (it == heap.end()) return;
+
+        int index = distance(heap.begin(), it);
+        heap[index] = heap.back();
+        heap.pop_back();
+
+        if (index < heap.size()) {
+            heapifyUp(index);
+            heapifyDown(index);
+        }
+    }
+
+    void printHeap() {
+        cout << "Heap array: ";
+        for (int val : heap)
+            cout << val << " ";
+        cout << endl;
+    }
+};
+
+int main() {
+    MinHeap h;
+    vector<int> values = {2, 1, 10, 6, 3, 8, 7, 13, 20};
+    for (int v : values) h.insert(v);
+
+    cout << "Initial Heap:\n";
+    h.printHeap();
+
+    vector<int> toInsert = {14, 0, 35};
+    for (int v : toInsert) h.insert(v);
+
+    cout << "\nHeap after Insertions (14, 0, 35):\n";
+    h.printHeap();
+
+    vector<int> toDelete = {6, 13, 35};
+    for (int v : toDelete) h.deleteValue(v);
+
+    cout << "\nHeap after Deletions (6, 13, 35):\n";
+    h.printHeap();
+
+    return 0;
+}
