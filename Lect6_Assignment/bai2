@@ -88,3 +88,14 @@ int main() {
 
     return 0;
 }
+//  Cài đặt heap tối thiểu
+// Lưu trữ dữ liệu heap dạng một mảng
+// Thuật toán heapifyUp: Duyệt từ node vừa chèn lên trên, đảm bảo tính chất heap
+// Vị trí cha => Đổi chỗ nếu node nhỏ hơn cha
+// Thuật toán heapifyDown: Duyệt từ node trên xuống, sửa để giữ tính chất heap
+// Chèn giá trị mới vào heap
+// Xóa giá trị bất kỳ trong heap
+// In dữ liệu heap dạng mảng (mức theo cấp)
+// Bảng khởi tạo ban đầu
+// Chèn thêm 3 giá trị: 14, 0, 35
+// Xóa 3 giá trị: 6, 13, 35
