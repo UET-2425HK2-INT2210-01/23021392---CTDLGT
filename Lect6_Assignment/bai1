@@ -1,0 +1,102 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+Node* insert(Node* root, int val) {
+    if (!root) return new Node(val);
+    if (val < root->data)
+        root->left = insert(root->left, val);
+    else
+        root->right = insert(root->right, val);
+    return root;
+}
+
+Node* findMin(Node* root) {
+    while (root->left) root = root->left;
+    return root;
+}
+
+Node* deleteNode(Node* root, int val) {
+    if (!root) return nullptr;
+    if (val < root->data)
+        root->left = deleteNode(root->left, val);
+    else if (val > root->data)
+        root->right = deleteNode(root->right, val);
+    else {
+        if (!root->left) {
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if (!root->right) {
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        Node* temp = findMin(root->right);
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data);
+    }
+    return root;
+}
+
+void inOrder(Node* root) {
+    if (root) {
+        inOrder(root->left);
+        cout << root->data << " ";
+        inOrder(root->right);
+    }
+}
+
+void printTree(Node* root, string indent = "", bool isLeft = true) {
+    if (root) {
+        cout << indent;
+        if (isLeft) {
+            cout << "L----";
+            indent += "|    ";
+        } else {
+            cout << "R----";
+            indent += "     ";
+        }
+        cout << root->data << endl;
+        printTree(root->left, indent, true);
+        printTree(root->right, indent, false);
+    }
+}
+
+int main() {
+    int initialValues[] = {2, 1, 10, 6, 3, 8, 7, 13, 20};
+    Node* root = nullptr;
+    for (int val : initialValues)
+        root = insert(root, val);
+
+    cout << "Initial BST:\n";
+    printTree(root);
+
+    int insertValues[] = {14, 0, 35};
+    for (int val : insertValues)
+        root = insert(root, val);
+
+    cout << "\nBST after Insertions (14, 0, 35):\n";
+    printTree(root);
+
+    int deleteValues[] = {6, 13, 35};
+    for (int val : deleteValues)
+        root = deleteNode(root, val);
+
+    cout << "\nBST after Deletions (6, 13, 35):\n";
+    printTree(root);
+
+    cout << "\nIn-order Traversal: ";
+    inOrder(root);
+    cout << endl;
+
+    return 0;
+}
