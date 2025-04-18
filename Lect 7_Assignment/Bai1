@@ -1,0 +1,60 @@
+#include<iostream>
+#include<fstream>
+#include<vector>
+#include<cmath>
+using namespace std;
+
+void print(vector<int> v){
+    for(int i = 0; i < v.size(); i++){
+        cout << v[i] << " ";
+    }
+    return;
+}
+
+/*
+Giả code bubbleSort:
+function bubbleSort(vector v)
+    n = size of v
+begin:
+    for i = 0 -> n - 1
+    begin:
+        for j = 0 -> n - i - 1
+        begin:
+            if v[j] > v[j+1]
+            swap v[j], v[j+1]
+        end if
+    end for
+end for
+
+*/
+
+
+void bubbleSort(vector<int> &v){
+    for(int i = 0; i < v.size() - 1; i++){
+
+        for(int j = 0; j < v.size() - i - 1; j++){
+            if(v[j] > v[j + 1]){
+                swap(v[j], v[j + 1]);
+            }
+        }
+    }
+}
+
+int main(){
+    string path;
+    cin >> path;
+    ifstream fileNumbers(path);
+    if(!fileNumbers){
+        cout << "Khong tim thay file" << endl;
+    }else{
+        vector<int> v;
+        int x;
+        while(fileNumbers >> x){
+            v.push_back(x);
+        }
+        bubbleSort(v);
+        print(v);
+    }
+
+    return 0;
+}

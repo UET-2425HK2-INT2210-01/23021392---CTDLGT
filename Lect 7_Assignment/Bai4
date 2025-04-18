@@ -1,0 +1,37 @@
+include<iostream>
+#include<vector>
+using namespace std;
+
+void print(vector<int> v){
+    for(int i = 0; i < v.size(); i++){
+        cout << v[i];
+    }
+    cout << endl;
+    return;
+}
+
+void generateBinary(int n, int count, vector<int> v){
+    if(count == n){ 
+        return;
+    }
+    for(int i = 0; i <= 1; i++){
+        if(count < n){ 
+            count++;   
+            v.push_back(i);
+            generateBinary(n, count, v); 
+            if(count == n){
+                print(v); 
+            }
+            v.pop_back(); 
+            count--; 
+        }
+    }
+}
+
+int main(){
+    int n;
+    cin >> n;
+    vector<int> v;
+    generateBinary(n, 0, v);
+    return 0;
+}
